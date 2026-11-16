@@ -1,0 +1,18 @@
+        using UnityEngine;
+2.	public class Die : MonoBehaviour
+3.	{
+4.	    public GameObject Bird;
+5.	    public GameObject Pattern;
+6.	    private void OnCollisionEnter2D(Collision2D collision)
+7.	    {
+8.	        if (collision.collider.tag == "Ground")
+9.	        {
+10.	            Destroy();
+11.	        }
+12.	    }
+13.	    private void Destroy()
+14.	    {
+15.	        Destroy(Bird);
+16.	        Instantiate(Pattern, transform.position, Quaternion.identity);
+17.	    }
+18.	}

@@ -1,0 +1,37 @@
+Projectile
+1.	using System.Collections;
+2.	using UnityEngine;
+3.	public class projectile : MonoBehaviour
+4.	{
+5.	    private Rigidbody2D rb;
+6.	    private SpringJoint2D springJoint;
+7.	    private bool isPressed;
+8.	    void Start()
+9.	    {
+10.	        rb = GetComponent<Rigidbody2D>();
+11.	        springJoint = GetComponent<SpringJoint2D>();
+12.	    }
+13.	    void Update()
+14.	    {
+15.	        if (isPressed)
+16.	        {
+17.	            rb.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+18.	        }
+19.	    }
+20.	    private void OnMouseDown()
+21.	    {
+22.	        isPressed = true;
+23.	        rb.isKinematic = true;
+24.	    }
+25.	    private void OnMouseUp()
+26.	    {
+27.	        isPressed = false;
+28.	        rb.isKinematic = false;
+29.	        StartCoroutine(Release());
+30.	    }
+31.	    IEnumerator Release()
+32.	    {
+33.	        yield return new WaitForSeconds(0.15f);
+34.	        GetComponent<SpringJoint2D>().enabled = false;
+35.	    }
+36.	}

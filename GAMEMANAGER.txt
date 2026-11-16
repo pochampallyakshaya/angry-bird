@@ -1,0 +1,16 @@
+1.	using UnityEngine;
+2.	using UnityEngine.SceneManagement;
+3.	public class GameManager : MonoBehaviour
+4.	{
+5.	    public GameObject playAgainButton;
+6.	    public void GameOver()
+7.	    {
+8.	        playAgainButton.SetActive(true);
+9.	        Time.timeScale = 0f;
+10.	    }
+11.	    public void PlayAgain()
+12.	    {
+13.	        Time.timeScale = 1f;
+14.	        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+15.	    }
+16.	}
